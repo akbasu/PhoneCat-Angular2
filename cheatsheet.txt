@@ -1,0 +1,4 @@
+1. get code
+2. npm install
+3. npm start
+4. Browse to http://localhost:8000
