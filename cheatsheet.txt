@@ -17,7 +17,7 @@ bookmark:
 https://angular.io/docs/ts/latest/guide/upgrade.html#!#bootstrapping-a-hybrid-1-2-phonecat
 Bootstrapping a hybrid 1+2 PhoneCat
 
-system.config.js additions: 
+systemjs.config.js additions: 
 ===========================
 '@angular/upgrade': 'npm:@angular/upgrade/bundles/upgrade.umd.js',
 '@angular/upgrade/static': 'npm:@angular/upgrade/bundles/upgrade-static.umd.js',
