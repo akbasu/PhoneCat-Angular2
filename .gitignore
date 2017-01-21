@@ -1,6 +1,7 @@
 logs/*
 !.gitkeep
 node_modules/
+node_modules.bak/
 tmp
 .idea
 .DS_Store

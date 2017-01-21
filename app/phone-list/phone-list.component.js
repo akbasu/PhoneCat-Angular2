@@ -3,9 +3,9 @@ var PhoneListController = (function () {
         this.phones = Phone.query();
         this.orderProp = 'age';
     }
-    PhoneListController.$inject = ['Phone'];
     return PhoneListController;
 }());
+PhoneListController.$inject = ['Phone'];
 // Register `phoneList` component, along with its associated controller and template
 angular.
     module('phoneList').

@@ -2,3 +2,23 @@
 2. npm install
 3. npm start
 4. Browse to http://localhost:8000
+5. After introducing ts
+6. npm run tsc:w to transpile ts to js
+7. npm start to deploy and run app
+8. After introducing Angular2 : 
+    Move the app/index.html file to the project root directory. 
+    Then change the development server root path in package.json to also point to the project root instead of app:
+        "scripts": {
+        "start": "http-server -a localhost -p 8000 -c-1 ./"
+    }
+    it was "start": "http-server ./app -a localhost -p 8000 -c-1",
+
+bookmark: 
+https://angular.io/docs/ts/latest/guide/upgrade.html#!#bootstrapping-a-hybrid-1-2-phonecat
+Bootstrapping a hybrid 1+2 PhoneCat
+
+system.config.js additions: 
+===========================
+'@angular/upgrade': 'npm:@angular/upgrade/bundles/upgrade.umd.js',
+'@angular/upgrade/static': 'npm:@angular/upgrade/bundles/upgrade-static.umd.js',
+      
