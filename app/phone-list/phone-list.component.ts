@@ -1,10 +1,16 @@
+declare var angular: angular.IAngularStatic;
+import { Phone, PhoneData } from '../core/phone/phone.service';
+
 class PhoneListController {
-  phones: any[];
+  phones: PhoneData[];
   orderProp: string;
-  query: string;
+
+  //query: string;
   static $inject = ['Phone'];
-  constructor(Phone: any) {
-    this.phones = Phone.query();
+  constructor(phone: Phone) {
+    phone.query().subscribe(phones => {
+      this.phones = phones;
+    });
     this.orderProp = 'age';
   }
 }

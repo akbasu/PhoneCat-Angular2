@@ -21,4 +21,10 @@ systemjs.config.js additions:
 ===========================
 '@angular/upgrade': 'npm:@angular/upgrade/bundles/upgrade.umd.js',
 '@angular/upgrade/static': 'npm:@angular/upgrade/bundles/upgrade-static.umd.js',
-      
+
+
+https://angular.io/docs/ts/latest/guide/upgrade.html#!#upgrading-the-phone-service 
+
+update phone.service.ts to the following. change lower case 'phone' to 'Phone' 
+angular.module('core.phone')
+.factory('Phone', downgradeInjectable(Phone));

@@ -8,7 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var static_1 = require("@angular/upgrade/static");
-//import {UpgradeModule} from '@angular/upgrade/src/aot/upgrade_module';
+var http_1 = require("@angular/http");
+var phone_service_1 = require("./core/phone/phone.service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -19,8 +20,12 @@ AppModule = __decorate([
     core_1.NgModule({
         imports: [
             platform_browser_1.BrowserModule,
-            static_1.UpgradeModule
+            static_1.UpgradeModule,
+            http_1.HttpModule
         ],
+        providers: [
+            phone_service_1.Phone,
+        ]
     })
 ], AppModule);
 exports.AppModule = AppModule;

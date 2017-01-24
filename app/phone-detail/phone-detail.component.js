@@ -1,9 +1,11 @@
+"use strict";
 var PhoneDetailController = (function () {
-    function PhoneDetailController($routeParams, Phone) {
+    function PhoneDetailController($routeParams, phone) {
         var _this = this;
         var phoneId = $routeParams['phoneId'];
-        this.phone = Phone.get({ phoneId: phoneId }, function (phone) {
-            _this.setImage(phone.images[0]);
+        phone.get(phoneId).subscribe(function (data) {
+            _this.phone = data;
+            _this.setImage(data.images[0]);
         });
     }
     PhoneDetailController.prototype.setImage = function (imageUrl) {
