@@ -9,7 +9,9 @@ var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var static_1 = require("@angular/upgrade/static");
 var http_1 = require("@angular/http");
+var forms_1 = require("@angular/forms");
 var phone_service_1 = require("./core/phone/phone.service");
+var phone_list_component_1 = require("./phone-list/phone-list.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -21,7 +23,14 @@ AppModule = __decorate([
         imports: [
             platform_browser_1.BrowserModule,
             static_1.UpgradeModule,
-            http_1.HttpModule
+            http_1.HttpModule,
+            forms_1.FormsModule
+        ],
+        declarations: [
+            phone_list_component_1.PhoneListComponent
+        ],
+        entryComponents: [
+            phone_list_component_1.PhoneListComponent
         ],
         providers: [
             phone_service_1.Phone,
