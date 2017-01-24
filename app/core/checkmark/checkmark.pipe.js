@@ -28,4 +28,4 @@ CheckmarkPipe = __decorate([
     core_1.Pipe({ name: 'checkmark' })
 ], CheckmarkPipe);
 exports.CheckmarkPipe = CheckmarkPipe;
-//# sourceMappingURL=checkmark.filter.js.map
+//# sourceMappingURL=checkmark.pipe.js.map

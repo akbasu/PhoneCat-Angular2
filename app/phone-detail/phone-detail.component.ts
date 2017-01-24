@@ -1,16 +1,24 @@
 declare var angular: angular.IAngularStatic;
-import { Phone, PhoneData } from '../core/phone/phone.service';
+import {downgradeComponent} from '@angular/upgrade/static';
 
-class PhoneDetailController {
+import {Component, Inject} from '@angular/core';
+
+import { Phone, PhoneData } from '../core/phone/phone.service';
+@Component({
+  moduleId: module.id,
+  selector: 'phone-detail',
+  templateUrl: 'phone-detail.template.html'
+})
+
+export class PhoneDetailComponent {
   phone: PhoneData;
   mainImageUrl: string;
-  static $inject = ['$routeParams', 'Phone'];
+  
 
-  constructor($routeParams: angular.route.IRouteParamsService, phone: Phone) {
-    let phoneId = $routeParams['phoneId'];
-     phone.get(phoneId).subscribe(data => {
-      this.phone = data;
-      this.setImage(data.images[0]);
+  constructor(@Inject('$routeParams') $routeParams: any, phone: Phone) {
+    phone.get($routeParams['phoneId']).subscribe(phone => {
+      this.phone = phone;
+      this.setImage(phone.images[0]);
     });
   }
   setImage(imageUrl: string) {
@@ -18,11 +26,8 @@ class PhoneDetailController {
   }
 }
 
-angular.
-  module('phoneDetail').
-  component('phoneDetail', {
-    templateUrl: 'phone-detail/phone-detail.template.html',
-    controller: PhoneDetailController
-  });
-
-
+angular.module('phoneDetail')
+  .directive(
+    'phoneDetail',
+    downgradeComponent({component: PhoneDetailComponent}) as angular.IDirectiveFactory
+  );

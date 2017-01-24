@@ -12,6 +12,8 @@ var http_1 = require("@angular/http");
 var forms_1 = require("@angular/forms");
 var phone_service_1 = require("./core/phone/phone.service");
 var phone_list_component_1 = require("./phone-list/phone-list.component");
+var phone_detail_component_1 = require("./phone-detail/phone-detail.component");
+var checkmark_pipe_1 = require("./core/checkmark/checkmark.pipe");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -27,14 +29,22 @@ AppModule = __decorate([
             forms_1.FormsModule
         ],
         declarations: [
-            phone_list_component_1.PhoneListComponent
+            phone_list_component_1.PhoneListComponent,
+            phone_detail_component_1.PhoneDetailComponent,
+            checkmark_pipe_1.CheckmarkPipe
         ],
         entryComponents: [
-            phone_list_component_1.PhoneListComponent
+            phone_list_component_1.PhoneListComponent,
+            phone_detail_component_1.PhoneDetailComponent
         ],
         providers: [
             phone_service_1.Phone,
-        ]
+            {
+                provide: '$routeParams',
+                useFactory: function (i) { return i.get('$routeParams'); },
+                deps: ['$injector']
+            }
+        ],
     })
 ], AppModule);
 exports.AppModule = AppModule;

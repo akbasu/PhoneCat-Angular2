@@ -6,6 +6,8 @@ import {FormsModule} from '@angular/forms';
 
 import {Phone} from './core/phone/phone.service';
 import {PhoneListComponent} from './phone-list/phone-list.component';
+import { PhoneDetailComponent } from './phone-detail/phone-detail.component';
+import { CheckmarkPipe } from './core/checkmark/checkmark.pipe';
 
 @NgModule({
     imports:[
@@ -15,15 +17,28 @@ import {PhoneListComponent} from './phone-list/phone-list.component';
         FormsModule
     ],
     declarations: [
-        PhoneListComponent
+        PhoneListComponent,
+        PhoneDetailComponent,
+        CheckmarkPipe
     ],
     entryComponents: [
-        PhoneListComponent
+        PhoneListComponent,
+        PhoneDetailComponent 
     ],
     providers:[
         Phone,
-    ]
+        {
+            provide: '$routeParams',
+            useFactory: (i: any) => i.get('$routeParams'), //routeParamsFactory,
+            deps: ['$injector']
+        }              
+    ],
+    /*export function routeParamsFactory(i: any){
+            return i.get('$routeParams');
+        }*/  
 })
+
+
 export class AppModule{
     ngDoBootstrap(){}
 }
