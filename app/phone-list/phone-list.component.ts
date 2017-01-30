@@ -1,6 +1,3 @@
-declare var angular: angular.IAngularStatic;
-
-import { downgradeComponent } from '@angular/upgrade/static';
 import {Component} from '@angular/core';
 import { Phone, PhoneData } from '../core/phone/phone.service';
 
@@ -15,19 +12,30 @@ export class PhoneListComponent {
   orderProp: string;
   query: string;
 
-  constructor(private phone: Phone) {
-    /*phone.query().subscribe(phones => {
-      this.phones = phones;
-    });*/
+  constructor(private phone: Phone) {     
+    this.getPhones();
     this.orderProp = 'age';
   }
 
-  getPhones(): PhoneData[] {
-    this.phone.query().subscribe(phones => {
-      this.phones = phones;
-    });
-    return this.sortPhones(this.filterPhones(this.phones));
+  updateOrder(){    
+    this.phones = this.sortPhones(this.phones);
   }
+
+  filterList(){
+    if(this.query){
+      this.phones = this.filterPhones(this.phones);
+    }
+    else{
+      this.getPhones();
+    }    
+  }
+
+  private getPhones(): PhoneData[] {
+      this.phone.query().subscribe(phones => {
+        this.phones = phones;
+      });
+      return this.sortPhones(this.filterPhones(this.phones));
+    }
 
   private filterPhones(phones: PhoneData[]) {
       if (phones && this.query) {
@@ -40,7 +48,7 @@ export class PhoneListComponent {
       return phones;
     }
 
-    private sortPhones(phones: PhoneData[]) {
+  private sortPhones(phones: PhoneData[]) {
       if (phones && this.orderProp) {
         return phones
           .slice(0) // Make a copy
@@ -57,9 +65,3 @@ export class PhoneListComponent {
       return phones;
     }
 }
-
-angular.module('phoneList')
-  .directive(
-    'phoneList',
-    downgradeComponent({component: PhoneListComponent}) as angular.IDirectiveFactory
-  );

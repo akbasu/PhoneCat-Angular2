@@ -5,12 +5,12 @@
 
       <p>
         Search:
-        <input [(ngModel)]="query" />
+        <input [(ngModel)]="query" (keyup)="filterList()" />
       </p>
 
       <p>
         Sort by:
-        <select [(ngModel)]=orderProp>
+        <select [(ngModel)]=orderProp (change)="updateOrder()">
           <option value="name">Alphabetical</option>
           <option value="age">Newest</option>
         </select>
@@ -21,15 +21,19 @@
       <!--Body content-->
 
       <ul class="phones">
-        <li *ngFor="let phone of getPhones()"
+        <li *ngFor="let phone of phones"
             class="thumbnail phone-list-item">
-          <a href="#!/phones/{{phone.id}}" class="thumb">
+          <!--<a href="#!/phones/{{phone.id}}" class="thumb">
             <img [src]="phone.imageUrl" [alt]="phone.name" />
           </a>
-          <a href="#!/phones/{{phone.id}}">{{phone.name}}</a>
-          <p>{{phone.snippet}}</p>
-        </li>
-      </ul>
+          <a href="#!/phones/{{phone.id}}">{{phone.name}}</a>-->
+        <a [routerLink]="['/phones', phone.id]" class="thumb">
+          <img [src]="phone.imageUrl" [alt]="phone.name" />
+        </a>
+        <a [routerLink]="['/phones', phone.id]" class="name">{{phone.name}}</a>
+        <p>{{phone.snippet}}</p>
+      </li>
+</ul>
 
     </div>
   </div>

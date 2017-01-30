@@ -8,18 +8,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-var static_1 = require("@angular/upgrade/static");
 var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
 var phone_service_1 = require("../core/phone/phone.service");
 var PhoneDetailComponent = (function () {
-    function PhoneDetailComponent($routeParams, phone) {
+    function PhoneDetailComponent(activatedRoute, phone) {
         var _this = this;
-        phone.get($routeParams['phoneId']).subscribe(function (phone) {
-            _this.phone = phone;
-            _this.setImage(phone.images[0]);
+        phone.get(activatedRoute.snapshot.params['phoneId'])
+            .subscribe(function (p) {
+            _this.phone = p;
+            _this.setImage(p.images[0]);
         });
     }
     PhoneDetailComponent.prototype.setImage = function (imageUrl) {
@@ -33,10 +31,7 @@ PhoneDetailComponent = __decorate([
         selector: 'phone-detail',
         templateUrl: 'phone-detail.template.html'
     }),
-    __param(0, core_1.Inject('$routeParams')),
-    __metadata("design:paramtypes", [Object, phone_service_1.Phone])
+    __metadata("design:paramtypes", [router_1.ActivatedRoute, phone_service_1.Phone])
 ], PhoneDetailComponent);
 exports.PhoneDetailComponent = PhoneDetailComponent;
-angular.module('phoneDetail')
-    .directive('phoneDetail', static_1.downgradeComponent({ component: PhoneDetailComponent }));
 //# sourceMappingURL=phone-detail.component.js.map

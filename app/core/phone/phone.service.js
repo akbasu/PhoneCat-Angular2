@@ -1,18 +1,3 @@
-/*'use strict';
-
-angular.
-  module('core.phone').
-  factory('Phone', ['$resource',
-    function($resource: angular.resource.IResourceService) {
-      return $resource('phones/:phoneId.json', {}, {
-        query: {
-          method: 'GET',
-          params: {phoneId: 'phones'},
-          isArray: true
-        }
-      });
-    }
-  ]);*/
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -23,10 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-//todo: remove this
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
-var static_1 = require("@angular/upgrade/static");
 require("rxjs/add/operator/map");
 var Phone = (function () {
     function Phone(http) {
@@ -47,6 +30,4 @@ Phone = __decorate([
     __metadata("design:paramtypes", [http_1.Http])
 ], Phone);
 exports.Phone = Phone;
-angular.module('core.phone')
-    .factory('Phone', static_1.downgradeInjectable(Phone));
 //# sourceMappingURL=phone.service.js.map

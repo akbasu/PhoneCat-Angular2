@@ -1,7 +1,7 @@
-declare var angular: angular.IAngularStatic;
-import {downgradeComponent} from '@angular/upgrade/static';
 
-import {Component, Inject} from '@angular/core';
+
+import {Component} from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { Phone, PhoneData } from '../core/phone/phone.service';
 @Component({
@@ -14,20 +14,16 @@ export class PhoneDetailComponent {
   phone: PhoneData;
   mainImageUrl: string;
   
-
-  constructor(@Inject('$routeParams') $routeParams: any, phone: Phone) {
-    phone.get($routeParams['phoneId']).subscribe(phone => {
-      this.phone = phone;
-      this.setImage(phone.images[0]);
-    });
+  constructor(activatedRoute: ActivatedRoute, phone: Phone) {
+     phone.get(activatedRoute.snapshot.params['phoneId'])
+      .subscribe((p: PhoneData) => {
+        this.phone = p;
+        this.setImage(p.images[0]);
+      });
   }
   setImage(imageUrl: string) {
     this.mainImageUrl = imageUrl;
   }
 }
 
-angular.module('phoneDetail')
-  .directive(
-    'phoneDetail',
-    downgradeComponent({component: PhoneDetailComponent}) as angular.IDirectiveFactory
-  );
+

@@ -8,17 +8,25 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var static_1 = require("@angular/upgrade/static");
 var core_1 = require("@angular/core");
 var phone_service_1 = require("../core/phone/phone.service");
 var PhoneListComponent = (function () {
     function PhoneListComponent(phone) {
         this.phone = phone;
-        /*phone.query().subscribe(phones => {
-          this.phones = phones;
-        });*/
+        this.getPhones();
         this.orderProp = 'age';
     }
+    PhoneListComponent.prototype.updateOrder = function () {
+        this.phones = this.sortPhones(this.phones);
+    };
+    PhoneListComponent.prototype.filterList = function () {
+        if (this.query) {
+            this.phones = this.filterPhones(this.phones);
+        }
+        else {
+            this.getPhones();
+        }
+    };
     PhoneListComponent.prototype.getPhones = function () {
         var _this = this;
         this.phone.query().subscribe(function (phones) {
@@ -67,6 +75,4 @@ PhoneListComponent = __decorate([
     __metadata("design:paramtypes", [phone_service_1.Phone])
 ], PhoneListComponent);
 exports.PhoneListComponent = PhoneListComponent;
-angular.module('phoneList')
-    .directive('phoneList', static_1.downgradeComponent({ component: PhoneListComponent }));
 //# sourceMappingURL=phone-list.component.js.map

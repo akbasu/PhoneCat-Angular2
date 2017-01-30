@@ -1,27 +1,8 @@
-/*'use strict';
-
-angular.
-  module('core.phone').
-  factory('Phone', ['$resource',
-    function($resource: angular.resource.IResourceService) {
-      return $resource('phones/:phoneId.json', {}, {
-        query: {
-          method: 'GET',
-          params: {phoneId: 'phones'},
-          isArray: true
-        }
-      });
-    }
-  ]);*/
-
-  //todo: remove this
-
   import {Injectable} from '@angular/core';
   import {Http, Response} from '@angular/http';
   import {Observable} from 'rxjs/Rx'
 
-  declare var angular: angular.IAngularStatic;
-  import {downgradeInjectable} from '@angular/upgrade/static';
+
 
   import 'rxjs/add/operator/map';
 
@@ -44,5 +25,4 @@ angular.
     }
   }  
 
-  angular.module('core.phone')
-    .factory('Phone', downgradeInjectable(Phone));
+  
