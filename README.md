@@ -10,11 +10,11 @@ https://angular.io/docs/ts/latest/guide/upgrade.html#!#phonecat-upgrade-tutorial
 
 ### Node.js
 
-- Get [Node.js][node].
+- Get Node.js.
 - Install the tool dependencies: `npm install`
 
 ## Development
 
 - Run 'npm run tsc' to transpile the ts files to js
 - Run 'npm start'
-- Navigate your browser to [http://localhost:8000/]
+- Navigate your browser to http://localhost:8000/
