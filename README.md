@@ -15,8 +15,8 @@ https://angular.io/docs/ts/latest/guide/upgrade.html#!#phonecat-upgrade-tutorial
 
 ## Development
 
-- Run `npm install` to transpile the ts files to js
-- Run `npm install`
+- Run `npm run tsc` to transpile the ts files to js
+- Run `npm start`
 - Navigate your browser to http://localhost:8000/
 
 ## Contact
