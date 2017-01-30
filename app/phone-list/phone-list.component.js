@@ -13,9 +13,11 @@ var phone_service_1 = require("../core/phone/phone.service");
 var PhoneListComponent = (function () {
     function PhoneListComponent(phone) {
         this.phone = phone;
+    }
+    PhoneListComponent.prototype.ngOnInit = function () {
         this.getPhones();
         this.orderProp = 'age';
-    }
+    };
     PhoneListComponent.prototype.updateOrder = function () {
         this.phones = this.sortPhones(this.phones);
     };

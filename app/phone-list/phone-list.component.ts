@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { Phone, PhoneData } from '../core/phone/phone.service';
 
 @Component({
@@ -12,7 +12,9 @@ export class PhoneListComponent {
   orderProp: string;
   query: string;
 
-  constructor(private phone: Phone) {     
+  constructor(private phone: Phone) { }
+
+  ngOnInit(){
     this.getPhones();
     this.orderProp = 'age';
   }
