@@ -5,6 +5,10 @@ This is an upgraded Angular2 PhoneCat application from AngularJS. The applicatio
 
 https://angular.io/docs/ts/latest/guide/upgrade.html#!#phonecat-upgrade-tutorial
 
+Please refer to my blog listing the additional steps that one needs to execute get a fully working application after every major step.
+
+https://basutech.wordpress.com/2017/02/03/angular2-upgrade/
+
 
 ## Prerequisites
 

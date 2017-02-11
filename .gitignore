@@ -1,4 +1,7 @@
 logs/*
+app/*.js*
+app/**/*.js*
+app/**/*.map
 !.gitkeep
 node_modules/
 node_modules.bak/
